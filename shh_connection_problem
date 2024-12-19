@@ -1,0 +1,17 @@
+ step 1 :  Idle Timeout
+Cause: The server or client is configured to disconnect idle SSH sessions after a specific duration.
+Solution:
+On the Client Side: Add keep-alive options in your local SSH configuration file (~/.ssh/config or /etc/ssh/ssh_config):
+    Host *
+    ServerAliveInterval 60
+    ServerAliveCountMax 3
+   after this type sudo systemctl restart sshd
+
+step2:  
+ Too Many Simultaneous Connections
+Cause: Exceeding the maximum allowed SSH connections on the server.
+Solution:
+Check and increase the limit in the server's SSH configuration (/etc/ssh/sshd_config):
+   MaxSessions 10
+   MaxStartups 10:30:60
+   after this type sudo systemctl restart sshd
